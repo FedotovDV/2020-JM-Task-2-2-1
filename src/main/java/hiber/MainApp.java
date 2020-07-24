@@ -16,6 +16,7 @@ public class MainApp {
 
         UserService userService = context.getBean(UserService.class);
 
+        userService.cleanTable();
 
         User user1 = new User("User1", "Lastname1", "user1@mail.ru");
         User user2 = new User("User2", "Lastname2", "user2@mail.ru");
@@ -48,7 +49,13 @@ public class MainApp {
             System.out.println();
         }
 
-        userService.cleanTable();
+
+        User tempUser = userService.getOwner("Запорожец", 111);
+        System.out.println("\nВладелец машины:");
+        System.out.println("Car =" + tempUser.getCar().toString());
+        System.out.println("First Name = " + tempUser.getFirstName());
+        System.out.println("Last Name = " + tempUser.getLastName());
+        System.out.println();
 
         context.close();
     }
